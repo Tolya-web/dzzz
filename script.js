@@ -1,0 +1,64 @@
+var modal = document.getElementById('myModal');
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName('closes')[0];
+
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+
+var myNodelist = document.getElementsByTagName('li');
+var i;
+for (i=0; i <myNodelist.length; i++){
+    var span = document.createElement("span");
+    var txt = document.createTextNode("\u00d7");
+    span.className = "close";
+    span.appendChild(txt);
+    myNodelist[i].appendChild(span);
+    
+}
+var close = document.getElementsByClassName("close");
+var i;
+for (i=0; i <close.length; i++) {
+    close[i].onclick = function(){
+        var div = this.parentElement;
+        div.style.display = "none";
+    }
+}
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+    if(ev.target.tagName === 'LI') {
+        ev.target.classList.toggle('checked');
+    }
+},false);
+
+function newElement() {
+    var li = document.createElement("li");
+    var inputValue = document.getElementById("myInput").value;
+    if (inputValue === ''){
+        alert("Поле не может быть пустым!");
+    }else {
+        var now = new Date();
+        inputValue += now;
+        var t = document.createTextNode(inputValue);
+        li.appendChild(t);
+        document.getElementById("myUL").appendChild(li);
+    }
+document.getElementById("myInput").value = "";
+
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("\u00d7");
+    span.className = "close";
+    span.appendChild(txt);
+    li.appendChild(span);
+
+    for (i = 0; i < close.length; i++) {
+        close[i].onclick = function() {
+            var div = this.parentElement;
+            div.style.display = "none";
+        }
+    }
+}
